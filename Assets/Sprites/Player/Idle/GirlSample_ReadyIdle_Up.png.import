@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2vprymsxa3b4"
-path="res://.godot/imported/GirlSample_Run_Down.png-ae5241e19299d5ce18854272f950f23e.ctex"
+uid="uid://b4bi6qokg3un6"
+path="res://.godot/imported/GirlSample_ReadyIdle_Up.png-50f5cdef86ce7274c6f423baa9625955.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Run/GirlSample_Run_Down.png"
-dest_files=["res://.godot/imported/GirlSample_Run_Down.png-ae5241e19299d5ce18854272f950f23e.ctex"]
+source_file="res://Assets/Sprites/Player/Idle/GirlSample_ReadyIdle_Up.png"
+dest_files=["res://.godot/imported/GirlSample_ReadyIdle_Up.png-50f5cdef86ce7274c6f423baa9625955.ctex"]
 
 [params]
 
