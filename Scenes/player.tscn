@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://x31rxlj06glb"]
 
 [ext_resource type="Texture2D" uid="uid://cyhnca7ho0psh" path="res://Assets/Sprites/Player/Run/GirlSample_Run_Right.png" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://b4p0acq2kuyjw" path="res://Scripts/player.gd" id="1_qqcod"]
 [ext_resource type="Texture2D" uid="uid://bavve8ljmtfwu" path="res://Assets/Sprites/Player/Run/GirlSample_Run_Left.png" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://j6o02phagxlh" path="res://Assets/Sprites/Player/Idle/GirlSample_ReadyIdle_Right.png" id="2_tx1dd"]
 [ext_resource type="Texture2D" uid="uid://bney6a1wj4j4w" path="res://Assets/Sprites/Player/Idle/GirlSample_ReadyIdle_Down.png" id="3_gymyn"]
@@ -12,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://d0v7vdokwi6ji" path="res://Assets/Sprites/Player/Idle/GirlSample_ReadyIdle_UpRight.png" id="9_qqcod"]
 [ext_resource type="Texture2D" uid="uid://d2vprymsxa3b4" path="res://Assets/Sprites/Player/Run/GirlSample_Run_Down.png" id="10_h4iuc"]
 [ext_resource type="Texture2D" uid="uid://b1wmu0s8tr1iv" path="res://Assets/Sprites/Player/Run/GirlSample_Run_DowlLeft.png" id="11_fd4e3"]
+[ext_resource type="Texture2D" uid="uid://crbk1m5xcyspl" path="res://Assets/Sprites/Player/Run/GirlSample_Run_DownRight.png" id="12_fd4e3"]
 [ext_resource type="Texture2D" uid="uid://cdddw26vut4d1" path="res://Assets/Sprites/Player/Run/GirlSample_Run_Up.png" id="13_qqcod"]
 [ext_resource type="Texture2D" uid="uid://bfxd6lxbou1mt" path="res://Assets/Sprites/Player/Run/GirlSample_Run_UpLeft.png" id="14_igrcy"]
 [ext_resource type="Texture2D" uid="uid://bhbbvu8v36vkp" path="res://Assets/Sprites/Player/Run/GirlSample_Run_UpRight.png" id="15_fs7ks"]
@@ -778,7 +780,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_cvnsp")]
+"values": [ExtResource("12_fd4e3")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1242,24 +1244,22 @@ blend_point_7/node = SubResource("AnimationNodeAnimation_8gxox")
 blend_point_7/pos = Vector2(-0.4, -0.6)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qpa8y"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_sbwqj"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_y6uwr")
 states/Idle/position = Vector2(416, 91)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_11gg7")
 states/Run/position = Vector2(605, 91)
 states/Start/position = Vector2(226, 91)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qpa8y")]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwi16"]
-radius = 14.0
-height = 98.0
+radius = 5.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1193761201]
+[node name="Player" type="CharacterBody2D" unique_id=1193761201 node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("1_qqcod")
+animation_tree = NodePath("AnimationTree")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1353098444]
+scale = Vector2(0.3359375, 0.3359375)
 texture = ExtResource("1_cvnsp")
 hframes = 4
 vframes = 2
@@ -1270,9 +1270,9 @@ libraries/ = SubResource("AnimationLibrary_8erm5")
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=428541388]
 tree_root = SubResource("AnimationNodeStateMachine_sbwqj")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Idle/blend_position = Vector2(0.121371984, -0.36244547)
-parameters/Run/blend_position = Vector2(-0.035620034, 0.59825325)
+parameters/Idle/blend_position = Vector2(0, 0.924)
+parameters/Run/blend_position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1025411332]
-position = Vector2(0, -22)
+position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_xwi16")
