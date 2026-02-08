@@ -1252,7 +1252,8 @@ states/Run/position = Vector2(605, 91)
 states/Start/position = Vector2(226, 91)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwi16"]
-radius = 5.0
+radius = 9.0
+height = 18.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1193761201 node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("1_qqcod")
@@ -1274,5 +1275,5 @@ parameters/Idle/blend_position = Vector2(0, 0.924)
 parameters/Run/blend_position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1025411332]
-position = Vector2(0, -9)
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_xwi16")
