@@ -41,6 +41,10 @@ Right={
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0,"script":null)
 ]
 }
+Up2={
+"deadzone": 0.2,
+"events": []
+}
 
 [physics]
 
@@ -48,4 +52,5 @@ Right={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
