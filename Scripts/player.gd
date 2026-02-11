@@ -8,6 +8,7 @@ var input :Vector2
 var playback : AnimationNodeStateMachinePlayback
 
 func _ready():
+	add_to_group("player")
 	playback = animation_tree["parameters/playback"]
 
 func _process(delta: float) -> void:
