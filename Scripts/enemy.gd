@@ -5,8 +5,9 @@ extends CharacterBody2D
 @export var attack_range: float = 40.0
 @export var detect_range: float = 80.0
 
-@onready var animation_tree : AnimationTree = $AnimationTree
+#@onready var animation_tree : AnimationTree = $AnimationTree
 
+@export var animation_tree : AnimationTree
 var player: Node2D = null
 var playback: AnimationNodeStateMachinePlayback
 var is_attacking: bool = false
@@ -32,7 +33,8 @@ func _physics_process(delta):
 	if distance > detect_range:
 		if !is_idle:
 			is_idle = true
-			print("Enemy too far from player - going idle")
+			print("Enemy too far from player - going idle")			
+			
 			velocity = Vector2.ZERO
 	elif distance > attack_range:
 		is_idle = false
@@ -48,28 +50,35 @@ func _physics_process(delta):
 		# Stop when in attack range
 		velocity = Vector2.ZERO
 		attack()
-
+	print()
 	move_and_slide()
 	update_animation_parameters()
 	
 func update_animation_parameters():
-	if velocity == Vector2.ZERO:
-		animation_tree["parameters/conditions/is_idle"] = true
-		animation_tree["parameters/conditions/is_moving"] = false
-	else:
-		animation_tree["parameters/conditions/is_idle"] = false
-		animation_tree["parameters/conditions/is_moving"] = true
+	if velocity == Vector2.ZERO:		
+		#animation_tree["parameters/conditions/is_idle"] = true
+		#animation_tree["parameters/conditions/is_moving"] = false
+		print("Update idle")
+		playback.travel("Idle")
+	else:		
+		#animation_tree["parameters/conditions/is_idle"] = false
+		#animation_tree["parameters/conditions/is_moving"] = true
+		print("Update move")
+		playback.travel("Moving")
 
 	if is_attacking:
-		animation_tree["parameters/conditions/is_attacking"] = true
-		animation_tree["parameters/conditions/is_idle"] = false
-		animation_tree["parameters/conditions/is_moving"] = false
+		playback.travel("Attacking")
+		#animation_tree["parameters/conditions/is_attacking"] = true
+		#animation_tree["parameters/conditions/is_idle"] = false
+		#animation_tree["parameters/conditions/is_moving"] = false
+		print("Update attack")
+		playback.travel("Attacking")
 	# animation_tree["parameters/conditions/is_taking_damage"] = velocity
 	
 #	animation_tree["parameters/Spawning/blend_position"] = input
-	animation_tree["parameters/Idle/blend_position"] = velocity.normalized()
-	animation_tree["parameters/Attacking/blend_position"] = velocity.normalized()
-	animation_tree["parameters/Moving/blend_position"] = velocity.normalized()
+	#animation_tree["parameters/Idle/blend_position"] = velocity.normalized()
+	#animation_tree["parameters/Attacking/blend_position"] = velocity.normalized()
+	#animation_tree["parameters/Moving/blend_position"] = velocity.normalized()
 #	animation_tree["parameters/TakingDamage/blend_position"] = input
 
 func attack():
