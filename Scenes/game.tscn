@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://x31rxlj06glb" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="Texture2D" uid="uid://iasdy6e4dgxo" path="res://Assets/Sprites/roguelikeCity_magenta.png" id="2_3dryh"]
 [ext_resource type="PackedScene" uid="uid://btawln3qidduy" path="res://Scenes/enemy.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://chuxmxy42fppi" path="res://Scenes/drone.tscn" id="4_3dryh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6g32"]
 texture = ExtResource("2_3dryh")
@@ -1162,3 +1163,6 @@ position_smoothing_enabled = true
 
 [node name="Enemy" parent="." unique_id=711611962 instance=ExtResource("3_wrm1d")]
 position = Vector2(642, 334)
+
+[node name="Drone" parent="." unique_id=496178693 instance=ExtResource("4_3dryh")]
+position = Vector2(698, 425)
