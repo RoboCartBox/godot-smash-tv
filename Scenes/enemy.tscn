@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://btawln3qidduy"]
 
-[ext_resource type="Script" uid="uid://dmxnokptxwayv" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Script" uid="uid://dmxnokptxwayv" path="res://Scripts/Enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://bb7ahnhyaunbh" path="res://Assets/Sprites/slime_green.png" id="1_hghv2"]
+[ext_resource type="Script" uid="uid://ucgwb2q251di" path="res://Scripts/States/StateMachine.gd" id="3_afpow"]
+[ext_resource type="Script" uid="uid://dipbcpvgge7dn" path="res://Scripts/States/EnemyIdle.gd" id="4_287tu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hghv2"]
 size = Vector2(12, 8)
@@ -143,7 +145,7 @@ graph_offset = Vector2(-236, -16.28572)
 
 [sub_resource type="Animation" id="Animation_afpow"]
 resource_name = "Attacking"
-length = 0.53333336
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -169,6 +171,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("1_hghv2")]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_287tu"]
 resource_name = "Idle"
@@ -184,7 +198,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [Vector2i(2, 2)]
+"values": [Vector2i(3, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -254,6 +268,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ExtResource("1_hghv2")]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ghaa6"]
 resource_name = "Spawning"
@@ -321,9 +347,8 @@ _data = {
 &"TakingDamage": SubResource("Animation_1dp5w")
 }
 
-[node name="Enemy" type="CharacterBody2D" unique_id=569572327 node_paths=PackedStringArray("animation_tree")]
+[node name="Enemy" type="CharacterBody2D" unique_id=569572327]
 script = ExtResource("1_1f0kj")
-animation_tree = NodePath("AnimationTree")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=183972459]
 position = Vector2(0, -12)
@@ -339,10 +364,6 @@ shape = SubResource("RectangleShape2D_hghv2")
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=809687129]
 tree_root = SubResource("AnimationNodeStateMachine_1f0kj")
 anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/is_attacking = false
-parameters/conditions/is_idle = false
-parameters/conditions/is_moving = false
-parameters/conditions/is_taking_damage = false
 parameters/Attacking/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Moving/blend_position = Vector2(0, 0)
@@ -351,3 +372,12 @@ parameters/TakingDamage/blend_position = Vector2(0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1730049430]
 libraries/ = SubResource("AnimationLibrary_auwsv")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1011469173 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_afpow")
+initial_state = NodePath("EnemyIdle")
+
+[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=1040478947 node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_287tu")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://dipbcpvgge7dn"
