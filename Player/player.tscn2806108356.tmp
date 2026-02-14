@@ -1839,8 +1839,9 @@ height = 12.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1193761201 node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("1_qqcod")
+speed = null
 animation_tree = NodePath("AnimationTree")
-physicscontrol = true
+physicscontrol = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1353098444]
 z_index = 1
