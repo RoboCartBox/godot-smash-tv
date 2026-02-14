@@ -23,8 +23,9 @@ signal damaged(attack: Attack)
 @export_group("Vision Ranges")
 @export var detection_radius := 100.0
 @export var chase_radius := 200.0
-# This guy doesn't actually attack, he just tries to get close to the player
 @export var follow_radius := 25.0
+@export var attack_range := 20.0
+@export var attacking_movement_speed:= 30.0
 
 @onready var sprite : Sprite2D = $Sprite2D
 

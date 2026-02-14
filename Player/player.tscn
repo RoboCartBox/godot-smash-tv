@@ -1254,14 +1254,15 @@ states/Start/position = Vector2(226, 91)
 graph_offset = Vector2(189, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwi16"]
-radius = 9.0
-height = 18.0
+radius = 6.0
+height = 12.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1193761201 node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("1_qqcod")
 animation_tree = NodePath("AnimationTree")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1353098444]
+z_index = 1
 scale = Vector2(0.390625, 0.390625)
 texture = ExtResource("1_cvnsp")
 hframes = 4
@@ -1277,5 +1278,5 @@ parameters/Idle/blend_position = Vector2(0, 0.924)
 parameters/Run/blend_position = Vector2(-0.24556488, 0.07871723)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1025411332]
-position = Vector2(0, 2)
+position = Vector2(1, 5)
 shape = SubResource("CapsuleShape2D_xwi16")

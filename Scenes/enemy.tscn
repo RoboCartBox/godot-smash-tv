@@ -7,9 +7,10 @@
 [ext_resource type="Script" uid="uid://coguwfny6tx4v" path="res://Objects/Scripts/Enemy/States/enemy_chase.gd" id="4_ghaa6"]
 [ext_resource type="Script" uid="uid://b1ytn3sggsq6y" path="res://Objects/Scripts/Enemy/States/enemy_wander.gd" id="6_1dp5w"]
 [ext_resource type="Script" uid="uid://djifcnqxdwmnd" path="res://Objects/Scripts/Enemy/States/enemy_stun.gd" id="7_auwsv"]
+[ext_resource type="Script" uid="uid://7soxufsseiif" path="res://Objects/Scripts/Enemy/States/enemy_attack.gd" id="8_auwsv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hghv2"]
-size = Vector2(12, 8)
+[sub_resource type="CircleShape2D" id="CircleShape2D_auwsv"]
+radius = 2.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1f0kj"]
 animation = &"Attacking"
@@ -391,8 +392,8 @@ vframes = 3
 frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=721125411]
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_hghv2")
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_auwsv")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=809687129]
 tree_root = SubResource("AnimationNodeStateMachine_1f0kj")
@@ -421,3 +422,6 @@ script = ExtResource("6_1dp5w")
 
 [node name="Stun" type="Node" parent="EnemyStateMachine" unique_id=820182793]
 script = ExtResource("7_auwsv")
+
+[node name="Attack" type="Node" parent="EnemyStateMachine" unique_id=1252497846]
+script = ExtResource("8_auwsv")
