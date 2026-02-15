@@ -13,6 +13,7 @@ func enter():
 	timer.timeout.connect(on_timer_finished)
 	add_child(timer)
 	enemy.stunned = true
+	enemy.play_animation("Stun")
 
 
 # Upon leaving this state, clear and free all

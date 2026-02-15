@@ -9,9 +9,9 @@ func physics_process_state(delta: float):
 	if distance > enemy.attack_range:
 		transitioned.emit(self, "idle")
 		return
-		
-	print("attacking")
 	
-	enemy.velocity = direction.normalized()*enemy.attacking_movement_speed
+	enemy.velocity = Vector2.ZERO
+	
+	enemy.play_animation("Attack")
 	
 	enemy.move_and_slide()

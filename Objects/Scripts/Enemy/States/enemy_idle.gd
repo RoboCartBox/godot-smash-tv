@@ -14,7 +14,7 @@ func enter():
 	idle_timer.timeout.connect(on_timeout)
 	idle_timer.autostart = true
 	add_child(idle_timer)
-	enemy.play_animation("stunned")
+	enemy.play_animation("Idle")
 	
 
 

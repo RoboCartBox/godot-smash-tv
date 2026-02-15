@@ -10,18 +10,15 @@ func physics_process_state(delta: float):
 	
 	var distance = direction.length()
 	
-	if distance > enemy.chase_radius:
-		transitioned.emit(self, "wander")
+	if distance > enemy.detection_radius:
+		transitioned.emit(self, "idle")
 		return
 		
-	#if distance < enemy.attack_range:
-		#transitioned.emit(self, "attack")
-	#return
-	
-	if distance > enemy.follow_radius:
-		transitioned.emit(self, "idle")
-		
+	if distance < enemy.attack_range:
+		transitioned.emit(self, "attack")
+		return
+			
 	enemy.velocity = direction.normalized()*chase_speed
 	
-	enemy.play_animation("stunned")
+	enemy.play_animation("Run")
 	enemy.move_and_slide()

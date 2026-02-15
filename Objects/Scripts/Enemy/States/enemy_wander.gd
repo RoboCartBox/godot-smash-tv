@@ -19,6 +19,7 @@ func enter():
 	wander_timer.timeout.connect(on_timer_finished)
 	wander_timer.autostart = true
 	add_child(wander_timer)
+	enemy.play_animation("Walk")
 
 
 func physics_process_state(delta: float):
