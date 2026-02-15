@@ -31,9 +31,7 @@ func _process(delta: float) -> void:
 
 func on_timer_finished():
 	var spawned_enemy = enemy_scene.instantiate()
-	number_of_spawned_enemies += 1
-	spawned_enemy.name = "Enemy_%d" % number_of_spawned_enemies
+	spawned_enemy.add_to_group("enemies")
 	get_tree().root.add_child(spawned_enemy)
 	spawned_enemy.global_position.x = spawn_area_location.global_position.x + randf_range(-spawn_location_variation_x, spawn_location_variation_x)
 	spawned_enemy.global_position.y = spawn_area_location.global_position.y + randf_range(-spawn_location_variation_y, spawn_location_variation_y)
-	print("Spawned enemy: ", spawned_enemy)
