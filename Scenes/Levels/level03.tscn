@@ -1176,6 +1176,7 @@ position = Vector2(-36, 2)
 [node name="LevelTransition" parent="." unique_id=1072022827 instance=ExtResource("4_riaba")]
 position = Vector2(477, 487)
 level = "uid://ca48rgi7w57xg"
+target_transition_area = "LevelTransition2"
 size = 3
 
 [editable path="TileMapLayer/Spawner"]

@@ -27,6 +27,17 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 
 func _ready() -> void:
 	_update_area()
+	if Engine.is_editor_hint():
+		return
+	
+	# monitoring = false
+	
+	body_entered.connect( _player_entered )
+	
+	pass
+
+func _player_entered( _player : Node2D ) -> void:
+	# call level manager
 	pass
 
 func _update_area() -> void:
@@ -55,3 +66,4 @@ func _update_area() -> void:
 func _snap_to_grid() -> void:
 	position.x = round( position.x / ( pixel_size / 2 ) ) * 16
 	position.y = round( position.y / ( pixel_size / 2 ) ) * 16
+	
