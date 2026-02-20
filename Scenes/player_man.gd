@@ -6,14 +6,19 @@ extends CharacterBody2D
 @onready var player_man : Node3D = $SubViewportContainer/SubViewport/player_man
 @onready var animation_tree : AnimationTree = $SubViewportContainer/SubViewport/player_man.get_node("AnimationTree")
 @onready var weapon_path : Array[Node] = $SubViewportContainer/SubViewport/player_man/Armature/Skeleton3D/BoneAttachment3D.get_children()
-
+@onready var ShootPos : Marker2D = $CentrePoint/ShootPos
+@onready var GunShot : AudioStreamPlayer2D = $GunShot
 
 @export var speed : float = 200
 @export var physicscontrol : bool = false
+@export var bullet_speed = 1000
+
 
 const MAX_SPEED = 200.0
 const ACCELERATION = 800.0
 const FRICTION = 900.0
+
+const IS_PLAYER = true
 
 
 var input_move : Vector2
@@ -23,11 +28,19 @@ var anim_pos : Vector2
 var look_vector : Vector2
 var player_offset_angle = 89.5
 
+var bullet_scene = preload("res://Assets/3D/Weapons/bullets/bullet01.tscn")
+var time_between_shot : float = 0.25
+var can_shoot : bool = true
+
+
 func _ready() -> void:
 	add_to_group("player")
 	playback = animation_tree["parameters/playback"]
+	$ShootTimer.wait_time = time_between_shot
+	
+	
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	input_move = Input.get_vector("Left", "Right", "Up", "Down")
 	input_aim = Input.get_vector("Aim Left", "Aim Right", "Aim Up", "Aim Down")
 	
@@ -44,13 +57,34 @@ func _process(delta: float) -> void:
 	
 	if input_move != Vector2.ZERO:
 		player_man.rotation.y = -input_move.angle()+player_offset_angle
+		$CentrePoint.global_rotation = input_move.angle()
 	if input_aim != Vector2.ZERO:
 		player_man.rotation.y = -input_aim.angle()+player_offset_angle
+		$CentrePoint.global_rotation= input_aim.angle()
+		
+	if Input.is_action_pressed("Fire") and can_shoot:
+		_shoot()
+		can_shoot = false
+		$ShootTimer.start()
+		GunShot.play()
 	
 	move_and_slide()
 	select_animation()
 	update_animation_parameters()
 	
+
+func _shoot():
+	var new_bullet = bullet_scene.instantiate()
+	new_bullet.global_position = ShootPos.global_position
+	new_bullet.global_rotation = ShootPos.global_rotation #-player_man.rotation.y+player_offset_angle
+	new_bullet.speed = bullet_speed
+	get_parent().add_child(new_bullet)
+
+func _on_shot_timer_timeout() -> void:
+	can_shoot = true
+	
+
+
 func select_animation():
 	if velocity.length() < 130:
 		playback.travel("Walk")
@@ -58,7 +92,6 @@ func select_animation():
 		playback.travel("Run")
 
 func update_animation_parameters():
-	
 	if input_move != Vector2.ZERO:
 		anim_pos = input_move.rotated(player_man.rotation.y)
 	if input_aim != Vector2.ZERO:

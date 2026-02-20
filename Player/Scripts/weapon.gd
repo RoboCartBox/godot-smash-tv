@@ -1,8 +1,8 @@
 extends Node3D
 
-
 var weapons = []
 var selected_weapon = 0
+
 
 func _ready() -> void:
 	for w in self.get_children():
@@ -21,3 +21,4 @@ func _process(delta: float) -> void:
 			selected_weapon += 1
 			weapons[selected_weapon].visible = true
 		print(weapons[selected_weapon])
+		

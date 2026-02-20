@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://jn2mle2pspd5"]
+
+[ext_resource type="Script" uid="uid://cl3inxxxcffu8" path="res://Assets/3D/Weapons/bullets/bullet_01.gd" id="1_hwh1t"]
+[ext_resource type="Texture2D" uid="uid://bbi1w2ip3nqqo" path="res://Assets/3D/Weapons/bullets/bullet.png" id="1_mh5wm"]
+
+[node name="Bullet01" type="Sprite2D" unique_id=705673090]
+rotation = 3.1415927
+scale = Vector2(0.39488578, 0.39488578)
+texture = ExtResource("1_mh5wm")
+script = ExtResource("1_hwh1t")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=132581369]
+position = Vector2(10.525, 0)
+rotation = 1.5707964
+target_position = Vector2(2.0336722e-06, 22.525)
+hit_from_inside = true
+
+[node name="DistanceTimeout" type="Timer" parent="." unique_id=318516296]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DistanceTimeout" to="." method="_on_distance_timeout_timeout"]
