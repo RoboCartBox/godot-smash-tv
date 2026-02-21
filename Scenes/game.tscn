@@ -1153,6 +1153,10 @@ sources/1 = SubResource("TileSetAtlasSource_i6g32")
 [sub_resource type="CircleShape2D" id="CircleShape2D_h4fw4"]
 radius = 36.55575
 
+[sub_resource type="Gradient" id="Gradient_1l0tm"]
+offsets = PackedFloat32Array(0, 0.46961325, 1)
+colors = PackedColorArray(0.92, 0.24978006, 0.064399995, 1, 0.468777, 0.46877706, 0.468777, 1, 0.24115604, 0.24115604, 0.24115604, 0.22745098)
+
 [node name="Game" type="Node2D" unique_id=1486287435]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=874963791]
@@ -1214,6 +1218,7 @@ stretch_shrink = 4
 [node name="SubViewport" type="SubViewport" parent="Player_Man/SubViewportContainer" unique_id=498954352]
 transparent_bg = true
 handle_input_locally = false
+audio_listener_enable_2d = true
 size = Vector2i(64, 64)
 render_target_update_mode = 4
 
@@ -1234,6 +1239,26 @@ position = Vector2(6.451613, 6.4516134)
 
 [node name="ShootPos" type="Marker2D" parent="Player_Man/CentrePoint" unique_id=1069915095]
 position = Vector2(92.47312, 23.65594)
+
+[node name="MuzzleParticles" type="CPUParticles2D" parent="Player_Man/CentrePoint/ShootPos" unique_id=1642174194]
+position = Vector2(-19.35484, 0)
+emitting = false
+amount = 16
+lifetime = 0.18000000000000002
+one_shot = true
+explosiveness = 0.74
+randomness = 0.48
+lifetime_randomness = 0.65
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 12.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 423.08
+initial_velocity_max = 630.77
+scale_amount_min = 0.0
+scale_amount_max = 5.0
+color = Color(1, 1, 1, 0.9254902)
+color_ramp = SubResource("Gradient_1l0tm")
 
 [node name="GunShot" type="AudioStreamPlayer2D" parent="Player_Man" unique_id=1770372858]
 stream = ExtResource("7_1l0tm")

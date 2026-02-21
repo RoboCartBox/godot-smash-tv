@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bcjnsl18857ev"
-path="res://.godot/imported/Assault Rifle Shot.wav-afa3c8b4c59ea838cf075a0c435ddb61.sample"
+path="res://.godot/imported/Assault Rifle Shot.wav-16b034488175e7a7b90ee475382e93f8.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/impacts/Assault Rifle Shot.wav"
-dest_files=["res://.godot/imported/Assault Rifle Shot.wav-afa3c8b4c59ea838cf075a0c435ddb61.sample"]
+source_file="res://Assets/Sounds/Weapons/Assault Rifle Shot.wav"
+dest_files=["res://.godot/imported/Assault Rifle Shot.wav-16b034488175e7a7b90ee475382e93f8.sample"]
 
 [params]
 

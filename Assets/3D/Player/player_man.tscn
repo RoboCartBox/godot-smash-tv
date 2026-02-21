@@ -122,40 +122,15 @@ states/Walk/position = Vector2(524.6667, 102)
 [node name="player_man" unique_id=1570705270 instance=ExtResource("1_c7unj")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(279544748) index="0" unique_id=1583858978]
-bones/0/position = Vector3(-0.0045354394, 0.8828336, 0.004054934)
-bones/0/rotation = Quaternion(-0.05884418, -0.46060237, -0.011611199, 0.8855778)
-bones/1/rotation = Quaternion(0.018347165, 0.0038693608, 0.0049974523, 0.99981177)
-bones/2/rotation = Quaternion(0.04194745, 0.00944998, 0.003624416, 0.99906856)
-bones/3/rotation = Quaternion(0.061144967, 0.008901948, 0.0016304656, 0.99808794)
-bones/4/rotation = Quaternion(0.2666404, 0.04793054, -0.008288259, 0.9625678)
-bones/5/rotation = Quaternion(-0.19685538, 0.30233136, -0.116304256, 0.925374)
-bones/7/rotation = Quaternion(-0.7403932, -0.3343915, 0.44346043, -0.3786069)
-bones/8/rotation = Quaternion(0.34386745, -0.21457313, 0.07132218, 0.9113872)
-bones/9/rotation = Quaternion(0.56551427, -0.57363886, 0.38367864, 0.45157808)
-bones/10/rotation = Quaternion(0.12687002, -0.22836292, 0.09228607, 0.96085256)
-bones/12/rotation = Quaternion(0.7162454, -0.36988735, 0.4476991, 0.38696435)
-bones/13/rotation = Quaternion(0.23857869, -0.18995875, -0.20181163, 0.9307351)
-bones/14/rotation = Quaternion(0.124620184, 0.23608057, -0.71808666, 0.6427187)
-bones/15/rotation = Quaternion(0.20249979, 0.04715223, -0.18994704, 0.95952624)
-bones/17/rotation = Quaternion(0.13907497, 0.16011709, 0.9707448, -0.11258519)
-bones/18/rotation = Quaternion(-0.25219333, -0.12659419, 0.013174649, 0.95927)
-bones/19/rotation = Quaternion(0.44232953, -0.010030649, -0.059401482, 0.8948271)
-bones/20/rotation = Quaternion(0.32276478, 0.06321805, 0.035676133, 0.9436915)
-bones/22/rotation = Quaternion(-0.22731958, 0.13725705, 0.9526473, 0.14815338)
-bones/23/rotation = Quaternion(-0.3356768, -0.00855337, -0.038574, 0.94114834)
-bones/24/rotation = Quaternion(0.5580098, -0.007908733, 0.08442846, 0.82549036)
-bones/25/rotation = Quaternion(0.30471405, -0.053608496, -0.009351503, 0.95088804)
-
-[node name="man-pedestrian-rival_Rig" parent="Armature/Skeleton3D" index="0" unique_id=1694117319]
+[node name="man-pedestrian-rival_Rig" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1583858978) index="0" unique_id=1694117319]
 surface_material_override/0 = SubResource("StandardMaterial3D_0l2m7")
 surface_material_override/1 = SubResource("StandardMaterial3D_7nqrf")
 surface_material_override/2 = SubResource("StandardMaterial3D_ipl68")
 surface_material_override/3 = SubResource("StandardMaterial3D_xn2uk")
 surface_material_override/4 = SubResource("StandardMaterial3D_xnccj")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1" unique_id=1342073490]
-transform = Transform3D(-0.24377318, 0.21758696, 0.9451087, 0.9247129, 0.345927, 0.15887146, -0.29237026, 0.91268295, -0.28553292, -0.27114657, 1.0616242, 0.07007177)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1583858978) index="1" unique_id=1342073490]
+transform = Transform3D(0.03324238, -0.98652476, 0.16019884, 0.07250401, -0.15748483, -0.984856, 0.9968134, 0.044353954, 0.06629188, -0.7270154, 1.4199369, -0.020191748)
 bone_name = "RightHand"
 bone_idx = 15
 script = ExtResource("2_x0lsp")

@@ -15,14 +15,13 @@ texture = ExtResource("1_mh5wm")
 script = ExtResource("1_hwh1t")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=132581369]
-position = Vector2(15.194266, -1.3283249e-06)
-rotation = 4.712389
-scale = Vector2(2.435, 2.435)
-target_position = Vector2(1.5001617e-06, 11.4399)
+position = Vector2(15.32, 0)
+rotation = 1.5707964
+target_position = Vector2(0, 34.665)
 hit_from_inside = true
 
 [node name="DistanceTimeout" type="Timer" parent="." unique_id=318516296]
-wait_time = 3.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
@@ -30,7 +29,7 @@ autostart = true
 position = Vector2(-1449.4624, -750.53766)
 scale = Vector2(2.1505377, 2.1505377)
 stream = ExtResource("3_id111")
-volume_db = 1.0
+volume_db = 22.698
 
 [node name="HitParticle" type="CPUParticles2D" parent="." unique_id=437021047]
 position = Vector2(1.9073486e-06, 1.1368684e-13)
